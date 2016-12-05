@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>native-Pagination</title>
+    <style>
+    	ul {
+    		list-style: none;
+    		overflow: hidden;
+    	}
+
+    	li {
+    		float: left;
+    		margin-right: 3px;
+    		
+    	}
+
+    	a {
+    		display: inline-block;
+    		border: 1px solid #ddd;
+    		width: 20px;
+    		height: 20px;
+    		text-align: center;
+    		line-height: 20px;
+    		cursor: pointer;
+    		text-decoration: none;
+    		border-radius: 3px;
+    		color: #333;
+    	}
+
+    	li span {
+    		display: inline-block;
+    		height: 20px;
+    		line-height: 20px;
+    		text-align: center;
+    		border: 1px solid #ddd;
+    		border-radius: 3px;
+    		font-size: 12px;
+    		color: #aaa;
+    		cursor: pointer;
+    	}
+
+    	.active {
+    		background: green;
+    		color: #fff;
+    		cursor: default;
+    	}
+    </style>
+</head>
+<body>
+
+<ul id="pageList"></ul>
+
+<script type="text/javascript" src="pagination.js"></script>
+<script type="text/javascript">
+	var page = new Pagination({
+		id: 'pageList',
+		total: 21,
+		showButtons: 10,
+		callback: function (pageIndex) {
+			console.log(pageIndex);
+		}
+	});
+
+</script>
+</body>
+</html>
