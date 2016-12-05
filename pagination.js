@@ -27,7 +27,9 @@
 		index = index || 0;
 		cur = cur || 0;
 		var html = '';
-		var pages = this.setting.showButtons;
+		var showButtons = this.setting.showButtons;
+		var total = this.setting.total;
+		var pages = showButtons >= total ? total : showButtons;
 		for (var i = index, lens = pages+index; i < lens; i++) {
 			if (i == cur) {
 				html += '<li><a href="javascript:;" class="active">'+(i+1)+'</a></li>';
@@ -37,11 +39,13 @@
 			}
 		}
 
-		if (cur == 0) {
+		if (cur == 0 && total > showButtons) {
 			return html+'<li><span id="next">下一页</span></li>';
 		}
-		else if(cur == this.setting.total-1) {
+		else if(cur == this.setting.total-1 && total > showButtons) {
 			return '<li><span id="prev">上一页</span></li>'+ html;
+		} else if (showButtons >= total) {
+			return html;
 		}
 
 		return '<li><span id="prev">上一页</span></li>'+ html +'<li><span id="next">下一页</span></li>';
@@ -93,8 +97,16 @@
 			}
 
 			// 最左2个 最右2个 中间
-				else {
+			else {
+				if (total > pages) {
 					pageList.innerHTML = this.doInit(end-pages, cur-1);
+				}
+				else {
+					for (var i = 0; i < len; i++) {
+						items[i].className = '';
+					}
+					e.target.className = 'active';
+				}
 			}
 		}
 

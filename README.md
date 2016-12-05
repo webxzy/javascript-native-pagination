@@ -27,7 +27,10 @@ var page = new Pagination({
 ## 参数 Options
 - id 页面元素的id
 - total 总页数
-- showButtons 需要显示的按钮数量
+- showButtons 需要显示的按钮数量 default: 6
 - callback 点击分页后触发的回调，pageIndex就是当前选择的页面的索引，从0开始
 
+## 其他说明 Other
+- 当showButtons的数量大于total的数量时，就会按照total的数量来渲染分页的按钮数量。只有当total的数量大于showButtons的数量时，设置的展示按钮数量才会有效。
+- 样式可以自己定义。
 Email: webxzy@qq.com
